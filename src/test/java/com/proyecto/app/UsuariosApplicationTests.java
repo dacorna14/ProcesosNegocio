@@ -9,12 +9,4 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class UsuariosApplicationTests {
 
-	@Autowired
-	private SaludoController saludo;
-
-	@Test
-	void contextLoads() {
-		assertEquals(saludo.verSaludo("Daniel").getContenido(), "Hola Daniel!");
-	}
-
 }
