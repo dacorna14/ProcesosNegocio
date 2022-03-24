@@ -27,7 +27,7 @@ public class UserRepositoryTests {
         user.setEmail("dacortesn@ufpso.edu.co");
         user.setPassword("123123123_");
         user.setFirstName("Daniel");
-        user.setLastName("Cortes");
+        user.setLastName("Cortés");
 
         User savedUser = repository.save(user);
 
