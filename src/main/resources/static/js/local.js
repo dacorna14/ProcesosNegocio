@@ -3,7 +3,7 @@ function sendData(path){
     var myForm = document.getElementById("myForm");
     var formData = new FormData(myForm);
     var jsonData = {};
-        for(var [k, v] formData)
+        for(var [k, v] of formData){
         jsonData[k] = v;
     }
     const request = fetch(path, {
