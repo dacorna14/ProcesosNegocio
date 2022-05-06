@@ -1,6 +1,6 @@
 {
-    "firstName":"Pepito",
-    "lastName":"Perez",
-    "email":"perez@gmail.com",
-    "password":"123123123"
+    "firstName":"Yeslicito",
+    "lastName":"Hernandez",
+    "email":"gbd@gmail.com",
+    "password":"109876543210"
 }

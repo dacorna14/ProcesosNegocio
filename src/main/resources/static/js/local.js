@@ -38,7 +38,7 @@ function listar(){
         }
     })
 }    
-
+}
 async function sendData(path){
     var myForm = document.getElementById("myForm");
     var formData = new FormData(myForm);
@@ -54,6 +54,6 @@ async function sendData(path){
         },
         body: JSON.stringify(jsonData)
     });
+    myForm.reset();
     console.log(await request.text())
-}
 }
