@@ -19,6 +19,7 @@ async function login(){
     if(request.ok){
         location.href="dashboard.html";
     }
+}
 
 function listar(){
     var settings={
@@ -31,14 +32,28 @@ function listar(){
     fetch("api/users",settings)
     .then(response => response.json())
     .then(function(data){
-        if(data.lenght>0){
+        //console.log("Hola")
+        //if(data.lenght>0){
+            var usuarios = '';
             for(const usuario of data){
                 console.log(usuario.email)
+                usuarios += '<tr>'+
+                '<th scope="row">'+usuario.id+'</th>'+
+                '<td>'+usuario.firstName+'</td>'+
+                '<td>'+usuario.lastName+'</td>'+
+                '<td>'+usuario.email+'</td>'+
+                '<td>'+
+                    '<button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-user-minus"></i></button>'+
+                    '<a href="modificar.html" class="btn btn-outline-warning"><i class="fa-solid fa-user-pen"></i></a>'+
+                    '<a href="visualizar.html" class="btn btn-outline-info"><i class="fa-solid fa-eye"></i></a>'+
+                '</td>'+
+            '</tr>';
+            //}
             }
-        }
+            document.getElementById("listar").innerHTML = usuarios;
     })
 }    
-}
+
 async function sendData(path){
     var myForm = document.getElementById("myForm");
     var formData = new FormData(myForm);
