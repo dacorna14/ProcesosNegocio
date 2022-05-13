@@ -38,18 +38,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <div class="p-3 mb-2 bg-dark text-white">
-                        <h1 class="display-6"><i class="fa-solid fa-user-pen"></i> Modificar Usuario</h1>
+                      <h1 class="display-6"><i class="fa-solid fa-user-pen"></i> Modificar Usuario</h1>
                     </div>
                     <form action="" method="post" id="myForm">
-                        <label for="firstName" class="form-label">Primer Nombre:</label>
-                        <input type="text" name="firstName" class="form-control" id="firstName" required><br>
-                        <label for="lastName" class="form-label">Primer Apellido:</label>
-                        <input type="text" name="lastName" class="form-control" id="lastName" required><br>
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" name="email" class="form-control" id="email" required><br>
-                        <label for="password" class="form-label">Contraseña:</label>
-                        <input type="password" name="password" class="form-control" id="password" required><br>
-                        <button type="button" class="btn btn-outline-warning" onclick="sendData('api/users')">Modificar</button>
+                      <input type="hidden" name="id" id="id">
+                      <label for="firstName" class="form-label">Primer Nombre:</label>
+                      <input type="text" name="firstName" class="form-control" id="firstName" required><br>
+                      <label for="lastName" class="form-label">Primer Apellido:</label>
+                      <input type="text" name="lastName" class="form-control" id="lastName" required><br>
+                      <label for="email" class="form-label">Email:</label>
+                      <input type="email" name="email" class="form-control" id="email" required><br>
+                      <label for="password" class="form-label">Contraseña:</label>
+                      <input type="password" name="password" class="form-control" id="password" required><br>
+                      <button type="button" class="btn btn-outline-warning" onclick="sendData('api/users')">Modificar</button>
                     </form>
                </div>
             </div>
