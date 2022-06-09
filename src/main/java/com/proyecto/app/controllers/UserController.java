@@ -2,6 +2,7 @@ package com.proyecto.app.controllers;
 
 import com.proyecto.app.entity.User;
 import com.proyecto.app.repository.UserRepository;
+import com.proyecto.app.util.JWTUtil;
 import com.proyecto.app.util.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,18 @@ public class UserController {
     private Message message = new Message();
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JWTUtil jwtUtil;
+
+    private boolean validarToken(String token){
+        String id = jwtUtil.getKey(token);
+        return id != null;
+    }
 
     @RequestMapping(value = "api/users/{id}", method = RequestMethod.GET)
-    public Optional<User> getUser(@PathVariable Long id) {
+    public Optional<User> getUser(@PathVariable Long id, @RequestHeader(value = "Authorization") String token){
+        if(validarToken(token) == false){ return null;}
+
         Optional<User> foundUser = userRepository.findById(id);
         if (foundUser.isPresent()) {
             return foundUser;
@@ -42,12 +52,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "api/users", method = RequestMethod.GET)
-    public List<User> listUser(){
+    public List<User> listUser(@RequestHeader(value = "Authorization") String token){
+        if(validarToken(token) == false){ return null;}
         return userRepository.findAll();
     }
 
     @RequestMapping(value= "api/users/{id}", method = RequestMethod.PUT)
-    public ResponseEntity editUser(@RequestBody User newUser, @PathVariable Long id){
+    public ResponseEntity editUser(@RequestBody User newUser, @PathVariable Long id, @RequestHeader(value = "Authorization") String token){
+        if(validarToken(token) == false){ return null;}
         Map<String, String> response = new HashMap<>();
         try{
             User user = userRepository.findById(id).get();
@@ -63,7 +75,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "api/users/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteUser(@PathVariable Long id){
+    public ResponseEntity deleteUser(@PathVariable Long id, @RequestHeader(value = "Authorization") String token){
+        if(validarToken(token) == false){ return null;}
         Map<String, String> response = new HashMap<>();
         try{
             User user = userRepository.findById(id).get();
